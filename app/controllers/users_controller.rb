@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @user = User.all
+    @users = User.joins(:license)
+    @users = @users.where(licenses: {state: "WA"})
   end
 
   def new

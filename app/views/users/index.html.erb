@@ -9,12 +9,14 @@
     </tr>
   </thead>
   <tbody>
-    <% @user.each do |user| %>
+    <% @users.each do |user| %>
       <tr>
-        <td><%= user.name.to_s %></td>
-        <td><%= user.email.to_s %></td>
-        <td><%= user.license.number.to_s %></td>
-        <td><%= user.license.state.to_s %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <% if user.license.present? %>
+          <td><%= user.license.number %></td>
+          <td><%= user.license.state %></td>
+        <% end %>
         <td><%= link_to "Delete", user, method: :Delete %></td>
       </tr>
     <% end %>
