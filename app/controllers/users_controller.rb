@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.build_license
   end
 
   def create
@@ -19,10 +20,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:notice] = "User successfully deleted."
+    redirect_to root_url
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, license_attributes: [:number, :state])
   end
 
 end

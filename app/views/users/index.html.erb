@@ -4,6 +4,8 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>License Number</th>
+      <th>State</th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +13,9 @@
       <tr>
         <td><%= user.name.to_s %></td>
         <td><%= user.email.to_s %></td>
+        <td><%= user.license.number.to_s %></td>
+        <td><%= user.license.state.to_s %></td>
+        <td><%= link_to "Delete", user, method: :Delete %></td>
       </tr>
     <% end %>
   </tbody>

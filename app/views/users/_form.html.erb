@@ -1,11 +1,21 @@
 <%= form_for @user do |f| %>
   <p><div class="field">
-    <%= f.label :name %>
+    <%= f.label :name %></br>
     <%= f.text_field :name %>
   </div></p>
   <p><div class="field">
-    <%= f.label :email %>
+    <%= f.label :email %></br>
     <%= f.text_field :email %>
   </div></p>
+  <%= f.fields_for :license do |license_builder| %>
+    <p><div class="field">
+      <%= license_builder.label :number, "License Number" %></br>
+      <%= license_builder.text_field :number %>
+    </div></p>
+    <p><div class="field">
+      <%= license_builder.label :state %></br>
+      <%= license_builder.text_field :state %>
+    </div></p>
+  <% end %>
   <p><%= f.submit %></p>
 <% end %>

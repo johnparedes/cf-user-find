@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
     errors.add(:name)
     errors.add(:email)
   end
+
+  has_one :license
+  accepts_nested_attributes_for :license
 end
